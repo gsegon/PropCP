@@ -70,7 +70,8 @@ For example, a simplistic handler for T(satisfying HasSomeProperty)/SomeProperty
       }
   };
 ```
-The Config type is not written out explicitly as the default is `NoConfig`. Another example with a custom Config type:
+The Config type is not written out explicitly as the default is `NoConfig`. Another example with but with a custom 
+non-default Config type:
 ```C++
 template <typename  T>
 struct PropCP::PropertyHandler<T, SomeOtherProp, MyConfig> {
