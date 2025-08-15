@@ -4,7 +4,6 @@
 namespace PropCP {
     struct NoConfig {};
 
-
     template<typename T, typename Property, typename Config = NoConfig>
     struct PropertyHandler {
         static void handle(Config & /*command*/) = delete;
@@ -16,4 +15,5 @@ namespace PropCP {
         { PropertyHandler<T, Property, Config>::handle(c) };
     };
 }
+
 #endif // PROP_CPO_HANDLER_H

@@ -1,1 +1,1 @@
-add_subdirectory(Commands)
+add_subdirectory(ExampleCmds)
