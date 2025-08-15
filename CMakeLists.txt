@@ -9,6 +9,7 @@ add_library(PropCP INTERFACE
         include/PropCP/dispatch.h
         include/PropCP/propcp.h
 )
+target_include_directories(PropCP INTERFACE include)
 
 option(BUILD_PROPCP_EXAMPLES "Build example applications" OFF)
 if (BUILD_PROPCP_EXAMPLES)
