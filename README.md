@@ -1,5 +1,5 @@
 # PropCP
-A lightweight C++20, compile-time property-driven dispatch framework. 
+A lightweight (C++20, header-only, zero-dependency) compile-time property-driven dispatch framework. 
 PropCP lets you associate “properties” (tags) with a type and automatically 
 run a sequence of property-specific handlers against a config — at compile time, with zero runtime overhead.
 
@@ -105,6 +105,7 @@ See [ExampleCmd](examples/ExampleCmds) for a more detailed application example.
 - Compile-time property pipelines: build ordered lists of properties per type.
 - Static safety: missing handlers are diagnosed at compile time.
 - Zero-overhead: no virtual dispatch or RTTI; templates and concepts only.
+- Header only, zero dependency.
 ## When to use
 - Capability-based pipelines (run steps only for features a type supports).
 - High-performance paths where dynamic polymorphism is too costly.
