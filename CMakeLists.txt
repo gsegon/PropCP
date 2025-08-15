@@ -10,7 +10,7 @@ add_library(PropCP INTERFACE
         include/PropCP/propcp.h
 )
 
-option(BUILD_EXAMPLES "Build example applications" OFF)
-if (BUILD_EXAMPLES)
+option(BUILD_PROPCP_EXAMPLES "Build example applications" OFF)
+if (BUILD_PROPCP_EXAMPLES)
     add_subdirectory(examples)
 endif ()
