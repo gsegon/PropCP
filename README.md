@@ -1,8 +1,12 @@
 # PropCP
-A lightweight C++20, compile-time property-driven dispatch framework. PropCP lets you associate “properties” (tags) with a type and automatically run a sequence of property-specific handlers against a config — at compile time, with zero runtime overhead.
+A lightweight C++20, compile-time property-driven dispatch framework. 
+PropCP lets you associate “properties” (tags) with a type and automatically 
+run a sequence of property-specific handlers against a config — at compile time, with zero runtime overhead.
 
 #### 1. Associating properties with types
-A typical use case is to tag a type with `SomeProperty` depending on if it satisfies a concept, which might for example be a condition that the type provides a function `some_function()` returning a specific type `SpecificType` and the type is derived from a `BaseType`.
+A typical use case is to tag a type with `SomeProperty` depending on if it satisfies a concept, which might for example 
+be a condition that the type provides a function `some_function()` returning a specific type `SpecificType` and the 
+type is derived from a `BaseType`.
 
 ```C++
   // User code
@@ -17,17 +21,18 @@ A typical use case is to tag a type with `SomeProperty` depending on if it satis
   struct SomeProperty {};  // Tag representing the "SomeProperty" property
 ```
 
-A type is tagged with one or more properties and collected into a `PropertyList`
+A type is tagged with one or more properties and collected into a `PropertyList`. Tagging doesn't have to be conditional, 
+one can simply construct a property and tag a type with it.
 
 ```C++
   // User code
   template <typename T>
   struct PropertyList {
       using type = PropCP::TypeList<
-          std::conditional_t<HasSomeProperty<T>, SomeProperty, void>,                // Property 1
-          std::conditional_t<HasSomeOtherProperty<T>, SomeOtherProperty, void>,  // Property 2
-          SimpleNonConditionalProperty                                           // Property 3
-          ...                                                                    // ...
+          std::conditional_t<HasSomeProperty<T>, SomeProperty, void>,                   // Property 1
+          std::conditional_t<HasSomeOtherProperty<T>, SomeOtherProperty, void>,         // Property 2
+          SimpleNonConditionalProperty                                                  // Property 3
+          ...                                                                           // ...
       >;
   };
 ```
