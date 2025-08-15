@@ -58,7 +58,7 @@ Once a list of properties for a type `T` is available it can be used to invoke o
         static void handle(Config & /*command*/) = delete;
     };
 ```
-For example, a simplistic handler for T/SomeProperty/NoConfig is implemated as:
+For example, a simplistic handler for T(satisfying HasSomeProperty)/SomeProperty/NoConfig is implemated as:
 ```C++
   // User code
   // Specialization for T/SomeProperty/NoConfig
@@ -70,6 +70,21 @@ For example, a simplistic handler for T/SomeProperty/NoConfig is implemated as:
       }
   };
 ```
+The Config type is not written out explicitly as the default is `NoConfig`. Another example with a custom Config type:
+```C++
+template <typename  T>
+struct PropCP::PropertyHandler<T, SomeOtherProp, MyConfig> {
+    static void handle(const MyConfig & config) {
+        std::cout << "Handling SomeOtherProp for type: " << typeid(T).name() << " with MyConfig." << std::endl;
+        // Example logic
+        std::cout << "parameter_1 is: " << config.parameter_1 << std::endl;
+        std::cout << "parameter_2 is: " << config.parameter_2 << std::endl;
+    }
+};
+```
+Note that in this example the template parameter is not constrained with a concept such as `HasSomeOtherProperty`, 
+as we didn't construct it, so it accepts any type.
+
 Finally, to invoke performing operations implemented by handlers `DispatchProperties` is used
 ```C++
   // User code
