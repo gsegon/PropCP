@@ -94,7 +94,7 @@ Finally, to invoke performing operations implemented by handlers `DispatchProper
     double parameter_2 = 3.14;
   };
   using Properties = typename TypeProperties<T>::Properties;
-  PropCP::DispatchProperties<T, Properties, Config>::dispatch(config);
+  PropCP::DispatchProperties<T, Properties, Config>::dispatch(config);  // Dispatch to handlers
 ```
 Handlers are called in order.
 
