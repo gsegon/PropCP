@@ -1,30 +1,16 @@
-#include "Command.h"
 
-#include <PropCP/propcp.h>
-
-#include "FooPropertyHandler.h"
-#include "BarPropertyHandler.h"
-
-template<typename T>
-class SomeCommand : public CommandWithDispatch<T, int> {
-
-public:
-
-    int& getConfig() override {
-        return m_config;
-    }
-
-private:
-    int m_config=1;;
-};
-
-
-
+#include "CommandWithDispatch.h"
 
 int main(int argc, char* argv[]) {
 
-    SomeCommand<double>  a;
+    // Example with default NoConfig
+    CommandWithDispatch<double>  a;
     a.execute();
+
+    // Example with MyConfig
+    MyConfig someConfig{2, 1.23456789};
+    CommandWithDispatch<double, MyConfig>  b(someConfig);
+    b.execute();
 
     return 0;
 }

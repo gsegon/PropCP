@@ -6,7 +6,7 @@
 
 namespace PropCP {
 
-    template<typename T, typename PropertyList, typename Config>
+    template<typename T, typename PropertyList, typename Config = NoConfig>
     struct DispatchProperties;
 
     // Base case: Empty property list
