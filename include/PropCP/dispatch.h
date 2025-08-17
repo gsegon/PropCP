@@ -6,30 +6,30 @@
 
 namespace PropCP {
 
-    template<typename T, typename PropertyList, typename Config = NoConfig>
+    template<typename T, typename PropertyList, typename Config = NoConfig, typename Op = DefaultOp>
     struct DispatchProperties;
 
     // Base case: Empty property list
-    template<typename T, typename Config>
-    struct DispatchProperties<T, TypeList<>, Config> {
+    template<typename T, typename Config, typename Op>
+    struct DispatchProperties<T, TypeList<>, Config, Op> {
         static void dispatch(const Config &) {
         // Do nothing
         }
     };
 
     // Specialization for a Non-Empty TypeList: Recursive Case
-    template<typename T, typename FirstProperty, typename... RestProperties, typename Config>
-    struct DispatchProperties<T, TypeList<FirstProperty, RestProperties...>, Config> {
+    template<typename T, typename FirstProperty, typename... RestProperties, typename Config, typename Op>
+    struct DispatchProperties<T, TypeList<FirstProperty, RestProperties...>, Config, Op> {
         static void dispatch(Config &config) {
-            static_assert(HasPropertyHandler<T, FirstProperty, Config>,
-                          "Missing PropertyHandler specialization for this T/Property/Config");
+            static_assert(HasPropertyHandler<T, FirstProperty, Config, Op>,
+                          "Missing PropertyHandler specialization for this T/Property/Config/Op");
 
 
             // Handle the first property
-            PropertyHandler<T, FirstProperty, Config>::handle(config);
+            PropertyHandler<T, FirstProperty, Config, Op>::handle(config);
 
             // Recursively handle the rest
-            DispatchProperties<T, TypeList<RestProperties...>, Config>::dispatch(config);
+            DispatchProperties<T, TypeList<RestProperties...>, Config, Op>::dispatch(config);
         }
     };
 
