@@ -18,7 +18,7 @@ struct PropCP::PropertyHandler<T, FooProp> {
 
 // Specialization for T/FooProp/MyConfig
 template <HasFoo T>
-struct PropCP::PropertyHandler<T, FooProp, MyConfig> {
+struct PropCP::PropertyHandler<T, FooProp,  MyConfig, PropCP::DefaultOp> {
     static void handle(const MyConfig & config) {
         std::cout << "Handling FooProp for type: " << typeid(T).name() << " with MyConfig." << std::endl;
         std::cout << "parameter_1 is: " << config.parameter_1 << std::endl;

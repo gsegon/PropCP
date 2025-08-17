@@ -53,15 +53,15 @@ The user has access to a list of all properties associated with a type `T` throu
 Once a list of properties for a type `T` is available it can be used to invoke operations. For each `Property` in the list a corresponding _handler_ function can be associated with it. Handlers are implemented by specializing `PropertyHandler` for wanted combinations of T/Property/Config. `Config` is added as an extra specialization type to serve as a mechanism for passing arguments to handlers.
 
 ```C++
-    template<typename T, typename Property, typename Config = NoConfig>
+    template<typename T, typename Property, typename Config = NoConfig, typename Op = DefaultOp>
     struct PropertyHandler {
         static void handle(Config & /*command*/) = delete;
     };
 ```
-For example, a simplistic handler for T(satisfying HasSomeProperty)/SomeProperty/NoConfig is implemated as:
+For example, a simplistic handler for T(satisfying HasSomeProperty)/SomeProperty/NoConfig/DefaultOp is implemented as:
 ```C++
   // User code
-  // Specialization for T/SomeProperty/NoConfig
+  // Specialization for T/SomeProperty/NoConfig/DefaultOp
   template <HasSomeProperty T>
   struct PropCP::PropertyHandler<T, SomeProperty> {
       static void handle(PropCP::NoConfig& config) {
@@ -70,7 +70,7 @@ For example, a simplistic handler for T(satisfying HasSomeProperty)/SomeProperty
       }
   };
 ```
-The Config type is not written out explicitly as the default is `NoConfig`. Another example with but with a custom 
+The Config type and Op type is not written out explicitly as the default is `NoConfig` and `DefaultOp` respectively. Another example with but with a custom 
 non-default Config type:
 ```C++
 template <typename  T>
