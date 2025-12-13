@@ -5,16 +5,15 @@
 #include "Command.h"
 
 // user/prop-cp includes
-#include "FooPropertyHandler.h"
 #include "BarPropertyHandler.h"
+#include "FooPropertyHandler.h"
 #include "SomeOtherPropertyHandler.h"
 
 
-template<typename T, typename Config=PropCP::NoConfig>
+template<typename T, typename Config = PropCP::NoConfig>
 class CommandWithDispatch : public Command {
 
 public:
-
     CommandWithDispatch(Config config = Config()) : config(config) {}
 
     void execute() override {
@@ -23,14 +22,10 @@ public:
         PropCP::DispatchProperties<T, Properties, Config>::dispatch(getConfig());
     }
 
-    virtual Config& getConfig() {
-        return config;
-    }
+    virtual Config &getConfig() { return config; }
 
 protected:
     Config config;
-
-
 };
 
 #endif // PROPCP_COMMANDWITHDISPATCH_H

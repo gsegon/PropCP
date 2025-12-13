@@ -8,10 +8,10 @@
 #include <type_traits> // conditional_t
 
 // Concepts
-template <typename T>
+template<typename T>
 concept HasFoo = true;
 
-template <typename T>
+template<typename T>
 concept HasBar = false;
 
 // Property tags
@@ -23,13 +23,13 @@ struct SomeOtherProp {};
 
 // User specialization point:
 // Specialize PropertyList<T> and set 'using type = TypeList<...>;' with your raw properties.
-template <typename T>
+template<typename T>
 struct PropertyList {
     using type = PropCP::TypeList<
-        std::conditional_t<HasFoo<T>, FooProp, void>,   // Add property FooBar based on the HasFoo condition.
-        std::conditional_t<HasBar<T>, BarProp, void>,   // Add property HasBar based on the HasBar condition.
-        SomeOtherProp                                   // Add property SomeOtherProp, without conditional check.
-    >;
+            std::conditional_t<HasFoo<T>, FooProp, void>, // Add property FooBar based on the HasFoo condition.
+            std::conditional_t<HasBar<T>, BarProp, void>, // Add property HasBar based on the HasBar condition.
+            SomeOtherProp // Add property SomeOtherProp, without conditional check.
+            >;
 };
 
 // User customization point:

@@ -9,9 +9,9 @@
 #include "MyConfig.h"
 
 // Specialization for T/BarProp/NoConfig
-template <HasBar T>
+template<HasBar T>
 struct PropCP::PropertyHandler<T, BarProp> {
-    static void handle(PropCP::NoConfig& config) {
+    static void handle(PropCP::NoConfig &config) {
         std::cout << "Handling BarProp for type: " << typeid(T).name() << std::endl;
         // Example logic
     }

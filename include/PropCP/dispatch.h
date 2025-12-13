@@ -13,7 +13,7 @@ namespace PropCP {
     template<typename T, typename Config, typename Op>
     struct DispatchProperties<T, TypeList<>, Config, Op> {
         static void dispatch(const Config &) {
-        // Do nothing
+            // Do nothing
         }
     };
 

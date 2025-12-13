@@ -16,6 +16,6 @@ namespace PropCP {
     concept HasPropertyHandler = requires(Config &c) {
         { PropertyHandler<T, Property, Config, Op>::handle(c) };
     };
-}
+} // namespace PropCP
 
 #endif // PROP_CPO_HANDLER_H

@@ -5,7 +5,7 @@
 
 // User specialization point:
 // Specialize PropertyList<T> and set 'using type = TypeList<...>;' with your raw properties.
-template <typename T>
+template<typename T>
 struct PropertyList {
     using type = PropCP::TypeList<>;
 };

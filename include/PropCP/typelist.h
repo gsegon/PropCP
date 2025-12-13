@@ -57,9 +57,6 @@ namespace PropCP {
     };
 
 
-
-
-
 } // namespace PropCP
 
 #endif // PROP_CP_TYPELIST_H
