@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 4.0)
-project(PropCP VERSION 0.1.1 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.12)
+project(PropCP VERSION 0.1.2 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 

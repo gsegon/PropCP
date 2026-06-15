@@ -1,4 +1,4 @@
-
+cmake_minimum_required(VERSION 3.12)
 add_executable(ExampleCmds main.cpp
         include/adapter-header.h        # user/prop-cp customization point
         include/FooPropertyHandler.h
